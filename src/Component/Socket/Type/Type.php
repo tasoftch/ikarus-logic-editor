@@ -32,18 +32,27 @@
  *
  */
 
-namespace Ikarus\Logic\Editor\Localization;
+namespace Ikarus\Logic\Editor\Component\Socket\Type;
 
 
-interface LocalizationInterface
+use Ikarus\Logic\Editor\Component\EditableComponentInterface;
+
+class Type extends \Ikarus\Logic\Model\Component\Socket\Type\Type implements EditableComponentInterface
 {
+    /** @var string|null */
+    private $label;
+
     /**
-     * Localize a given string format and apply the string formatting after localization.
-     * If no format exists, return null
-     *
-     * @param string $format
-     * @param mixed ...$arguments
      * @return string|null
      */
-    public function getLocalizedString(string $format, ...$arguments): ?string;
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function __construct(string $name, string $label = NULL)
+    {
+        parent::__construct($name);
+        $this->label = $label ?: $name;
+    }
 }

@@ -37,7 +37,7 @@ namespace Ikarus\Logic\Editor\Component;
 
 use Ikarus\Logic\Model\Component\AbstractNodeComponent;
 
-abstract class AbstractEditableNodeComponent extends AbstractNodeComponent implements EditableComponentInterface
+abstract class AbstractEditableNodeComponent extends AbstractNodeComponent implements EditableNodeComponentInterface
 {
     /** @var string */
     protected $label;

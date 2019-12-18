@@ -40,11 +40,12 @@ abstract class AbstractLocalization implements LocalizationInterface
     /**
      * @inheritDoc
      */
-    public function getLocalizedString(string $format, ...$arguments): string
+    public function getLocalizedString(string $format, ...$arguments): ?string
     {
-        if($fmt = $this->getLocalizedFormat($format))
-            $format = $fmt;
-        return func_num_args() > 1 ? vsprintf($format, ...$arguments) : $format;
+        if($fmt = $this->getLocalizedFormat($format)) {
+            return func_num_args() > 1 ? vsprintf($fmt, ...$arguments) : $fmt;
+        }
+        return NULL;
     }
 
     /**

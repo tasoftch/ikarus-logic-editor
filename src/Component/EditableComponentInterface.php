@@ -50,24 +50,4 @@ interface EditableComponentInterface extends ComponentInterface
      * @return string|null
      */
     public function getLabel(): ?string;
-
-    /**
-     * Gets the menu path.
-     *
-     * Menus can be used in editor systems to let the user choose from a list of available new nodes.
-     *
-     * The menu path uses a slash (/) as separator:
-     * Example: "My Menu/Sub Menu/Test Menu"
-     *  The component can be found under Main Menu > My Menu > Sub Menu > Test Menu
-     *
-     * @return string|null
-     */
-    public function getMenuPath(): ?string;
-
-    /**
-     * Gets a specific component label only for representation as menu item.
-     *
-     * @return string|null
-     */
-    public function getMenuLabel(): ?string;
 }

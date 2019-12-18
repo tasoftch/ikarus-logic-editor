@@ -32,18 +32,30 @@
  *
  */
 
-namespace Ikarus\Logic\Editor\Localization;
+namespace Ikarus\Logic\Editor\Exception;
 
 
-interface LocalizationInterface
+use Ikarus\Logic\Model\Component\ComponentInterface;
+use Ikarus\Logic\Model\Exception\LogicException;
+
+class SerializationException extends LogicException
 {
+    /** @var ComponentInterface|null */
+    private $component;
+
     /**
-     * Localize a given string format and apply the string formatting after localization.
-     * If no format exists, return null
-     *
-     * @param string $format
-     * @param mixed ...$arguments
-     * @return string|null
+     * @return ComponentInterface|null
      */
-    public function getLocalizedString(string $format, ...$arguments): ?string;
+    public function getComponent(): ?ComponentInterface
+    {
+        return $this->component;
+    }
+
+    /**
+     * @param ComponentInterface|null $component
+     */
+    public function setComponent(?ComponentInterface $component): void
+    {
+        $this->component = $component;
+    }
 }

@@ -32,18 +32,25 @@
  *
  */
 
-namespace Ikarus\Logic\Editor\Localization;
+namespace Ikarus\Logic\Editor\Component\Socket;
 
 
-interface LocalizationInterface
+use Ikarus\Logic\Model\Package\BasicTypesPackage;
+
+class InputComponent extends AbstractSocketComponent
 {
     /**
-     * Localize a given string format and apply the string formatting after localization.
-     * If no format exists, return null
-     *
-     * @param string $format
-     * @param mixed ...$arguments
-     * @return string|null
+     * Input constructor.
+     * @param string $socketName
+     * @param string|null $socketLabel
+     * @param string $socketType
+     * @param bool $allowsMultiple
      */
-    public function getLocalizedString(string $format, ...$arguments): ?string;
+    public function __construct($socketName, string $socketLabel = NULL, string $socketType = BasicTypesPackage::TYPE_ANY, $allowsMultiple = false)
+    {
+        $this->socketName = $socketName;
+        $this->socketType = $socketType;
+        $this->allowsMultiple = $allowsMultiple;
+        $this->label = $socketLabel ?: $socketName;
+    }
 }

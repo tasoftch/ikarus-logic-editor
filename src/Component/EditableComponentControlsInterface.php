@@ -32,18 +32,17 @@
  *
  */
 
-namespace Ikarus\Logic\Editor\Localization;
+namespace Ikarus\Logic\Editor\Component;
 
 
-interface LocalizationInterface
+use Ikarus\Logic\Model\Component\ComponentInterface;
+
+interface EditableComponentControlsInterface extends ComponentInterface
 {
     /**
-     * Localize a given string format and apply the string formatting after localization.
-     * If no format exists, return null
+     * Gets the control types of all controls required by this plugin
      *
-     * @param string $format
-     * @param mixed ...$arguments
-     * @return string|null
+     * @return array
      */
-    public function getLocalizedString(string $format, ...$arguments): ?string;
+    public function getControlTypeNames(): array;
 }

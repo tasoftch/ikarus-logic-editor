@@ -32,18 +32,28 @@
  *
  */
 
-namespace Ikarus\Logic\Editor\Localization;
+namespace Ikarus\Logic\Editor\Component;
 
 
-interface LocalizationInterface
+interface EditableNodeComponentInterface extends EditableComponentInterface
 {
     /**
-     * Localize a given string format and apply the string formatting after localization.
-     * If no format exists, return null
+     * Gets the menu path.
      *
-     * @param string $format
-     * @param mixed ...$arguments
+     * Menus can be used in editor systems to let the user choose from a list of available new nodes.
+     *
+     * The menu path uses a slash (/) as separator:
+     * Example: "My Menu/Sub Menu/Test Menu"
+     *  The component can be found under Main Menu > My Menu > Sub Menu > Test Menu
+     *
      * @return string|null
      */
-    public function getLocalizedString(string $format, ...$arguments): ?string;
+    public function getMenuPath(): ?string;
+
+    /**
+     * Gets a specific component label only for representation as menu item.
+     *
+     * @return string|null
+     */
+    public function getMenuLabel(): ?string;
 }
